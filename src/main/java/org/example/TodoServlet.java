@@ -48,6 +48,14 @@ public class TodoServlet extends HttpServlet {
 
                 break;
 
+            case "complete":
+                int completeId = Integer.parseInt(request.getParameter("id"));
+
+                manager.completeTask(completeId);
+
+                response.sendRedirect("todo");
+                break;
+
             default:
 
                 request.setAttribute(

@@ -19,6 +19,10 @@ public class Task {
     @Column(name = "description", nullable = false)
     private String description;
 
+    @Column(name = "completed", nullable = false)
+    private boolean completed = false;
+
+
     public Task() {
     }
 
@@ -36,5 +40,13 @@ public class Task {
 
     public String toString() {
         return id + ". " + description;
+    }
+
+    public boolean isCompleted() {
+        return completed;
+    }
+
+    public void setCompleted(boolean completed) {
+        this.completed = completed;
     }
 }

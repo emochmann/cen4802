@@ -76,4 +76,26 @@ public class TodoManager {
             e.printStackTrace();
         }
     }
+
+    public void completeTask(int id) {
+        Transaction transaction = null;
+
+        try (Session session = HibernateManager.getSessionFactory().openSession()) {
+            transaction = session.beginTransaction();
+
+            Task task = session.get(Task.class, id);
+
+            if (task != null) {
+                task.setCompleted(true);
+                transaction.commit();
+                System.out.println("Task completed.");
+            }
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            System.out.println("Error completing task.");
+            e.printStackTrace();
+        }
+    }
 }
