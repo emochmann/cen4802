@@ -11,3 +11,15 @@ Maven, and Tomcat and can be accessed through a web browser.
 This application is based on a To-Do List project that I originally created for a previous course 
 assignment. I reused and modified the project for CEN4802 to practice version control and DevOps 
 concepts using Git and GitHub.
+
+# Unit Testing
+
+JUnit 5 is used to run automated unit tests for this project. The tests check different behaviors of the Task class, including the task description and completed status.
+
+The unit tests can be run with:
+
+mvn test
+
+The full project can be built and tested with:
+
+mvn clean package
