@@ -31,7 +31,7 @@ public class TodoManager {
             List<Task> tasks = session.createQuery("from Task", Task.class).list();
 
             if (tasks.isEmpty()) {
-                System.out.println("No tasks found.");
+                System.out.println("Your To-Do List is empty!");
             } else {
                 System.out.println("\nTo-Do List:");
                 for (Task task : tasks) {
