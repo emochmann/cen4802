@@ -11,7 +11,7 @@
 
 <body>
 
-<h1>My To-Do List</h1>
+<h1>My Docker To-Do List</h1>
 
 <p>
     <a href="<%= request.getContextPath() %>/todo?action=addPage">
