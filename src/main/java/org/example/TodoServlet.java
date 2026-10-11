@@ -56,6 +56,14 @@ public class TodoServlet extends HttpServlet {
                 response.sendRedirect("todo");
                 break;
 
+            case "reopen":
+                int reopenId = Integer.parseInt(request.getParameter("id"));
+
+                manager.reopenTask(reopenId);
+
+                response.sendRedirect("todo");
+                break;
+
             default:
 
                 request.setAttribute(

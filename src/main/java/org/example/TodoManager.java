@@ -98,4 +98,30 @@ public class TodoManager {
             e.printStackTrace();
         }
     }
+
+    public void reopenTask(int id) {
+        Transaction transaction = null;
+
+        try (Session session = HibernateManager.getSessionFactory().openSession()) {
+            transaction = session.beginTransaction();
+
+            Task task = session.get(Task.class, id);
+
+            if (task != null) {
+                task.setCompleted(false);
+                transaction.commit();
+                System.out.println("Task reopened.");
+            } else {
+                System.out.println("Task not found.");
+                transaction.rollback();
+            }
+
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            System.out.println("Error reopening task.");
+            e.printStackTrace();
+        }
+    }
 }
