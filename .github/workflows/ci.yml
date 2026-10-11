@@ -17,7 +17,7 @@ jobs:
       - name: Set up Java
         uses: actions/setup-java@v4
         with:
-          java-version: '24'
+          java-version: '21'
           distribution: 'temurin'
           cache: maven
 
@@ -30,4 +30,14 @@ jobs:
           name: Mod6Todo-WAR
           path: target/Mod6Todo.war
 
+      - name: Build Docker image
+        run: docker build -t mod6todo:midterm .
 
+      - name: Save Docker image
+        run: docker save mod6todo:midterm -o mod6todo-midterm.tar
+
+      - name: Upload Docker image artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: Mod6Todo-Docker-Image
+          path: mod6todo-midterm.tar
