@@ -65,7 +65,9 @@
                 Mark Complete
             </a>
             <% } else { %>
-            Completed
+            <a href="<%= request.getContextPath() %>/todo?action=reopen&id=<%= task.getId() %>">
+                Reopen Task
+            </a>
             <% } %>
         </td>
     </tr>
